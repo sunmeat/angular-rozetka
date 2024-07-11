@@ -1,4 +1,4 @@
-# Resume
+# Rozetka
 
 ![Results](https://github.com/sunmeat/angular-resume/blob/master/results.png?raw=true)
 
