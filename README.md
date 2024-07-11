@@ -1,23 +1,19 @@
 # Rozetka
 
-![Results](https://github.com/sunmeat/angular-resume/blob/master/results.png?raw=true)
+Результат на 11.07.2024:
+![Results](https://raw.githubusercontent.com/sunmeat/angular-rozetka/master/result.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.5.
+Делал по образцу:
+![Results](https://raw.githubusercontent.com/sunmeat/angular-rozetka/master/%D1%80%D0%B5%D1%84%D0%B5%D1%80%D0%B5%D0%BD%D1%81%20%D0%B4%D0%BB%D1%8F%20%D0%B2%D1%91%D1%80%D1%81%D1%82%D0%BA%D0%B8.png)
 
-## Development server
+```
+в компоненте main-content есть директива ngFor для генерации 5 карточек
+<app-card *ngFor="let product of products" [product]="product"></app-card>
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+в компоненте card есть директива ngIf для скрытия кнопки "добавить в корзину"
+<button class="add-to-cart-button" (click)="addItem()" *ngIf="!isInCart">Додати в кошик</button>
 
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+также в карточке применяется кастомный пайп, потому что стандартный CurrencyPipe мне не понравился :)
+<!--<p class="product-price">{{product.price | currency:'UAH':'symbol-narrow'}}</p>-->
+<p class="product-price">{{product.price | currencyFormatter:'₴':'right'}}</p>
+```
